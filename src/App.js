@@ -1,61 +1,73 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import RecipeList from "./components/recipeList";
-import RecipeForm from "./components/RecipeForm";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import AddRecipe from "./pages/addRecipe";
+import EditRecipe from "./pages/EditRecipe";
 
-function App() {
-  const [recipes, setRecipes] = useState([]);
+const App = () => {
+  const [recipes, setRecipes] = useState([
+    {
+      id: 1,
+      title: "Spaghetti Bolognese",
+      ingredients: "Pasta, Meat, Sauce",
+      instructions: "Cook and enjoy!",
+      imageUrl:
+        "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+    },
+    {
+      id: 2,
+      title: "Caesar Salad",
+      ingredients: "Lettuce, Chicken, Croutons, Dressing",
+      instructions: "Mix and serve!",
+      imageUrl:
+        "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+    },
+  ]);
 
-  useEffect(() => {
-    const storeRecipes = JSON.parse(localStorage.getItem("recipes") || []);
-    setRecipes(storeRecipes);
-  });
-  const saveRecipesToLocalStorage = (updatedRecipes) => {
-    setRecipes(updatedRecipes);
-    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+  const addRecipe = (newRecipe) => {
+    setRecipes([...recipes, { id: recipes.length + 1, ...newRecipe }]);
   };
 
-  const handleAddRecipe = (newRecipe) => {
-    const updatedRecipes = [...recipes, { ...newRecipe, id: Date.now() }];
-    saveRecipesToLocalStorage(updatedRecipes);
-  };
-
-  const handleEditRecipe = (editedRecipe) => {
-    const updatedRecipes = recipes.map((recipe) =>
-      recipe.id === editedRecipe.id ? editedRecipe : recipe
+  const editRecipe = (id, updatedRecipe) => {
+    setRecipes(
+      recipes.map((recipe) =>
+        recipe.id === id ? { ...recipe, ...updatedRecipe } : recipe
+      )
     );
-    saveRecipesToLocalStorage(updatedRecipes);
   };
 
-  const handleDeleteRecipe = (recipeId) => {
-    const updatedRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
-    saveRecipesToLocalStorage(updatedRecipes);
+  const deleteRecipe = (id) => {
+    setRecipes(recipes.filter((recipe) => recipe.id !== id));
   };
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" exact>
-          {/* Moved RecipeList outside the Routes */}
-          <RecipeList recipes={recipes} onDelete={handleDeleteRecipe} />
-        </Route>
-        <Route path="/add" exact>
-          <RecipeForm onSubmit={handleAddRecipe} />
-        </Route>
-        <Route path="/edit/:id" exact>
-          <RecipeForm
-            onSubmit={handleEditRecipe}
-            initialValues={recipes.find(
-              (recipe) =>
-                recipe.id.toString() ===
-                window.location.pathname.split("/").pop()
-            )}
+      <div>
+        <nav className="bg-blue-500 p-4">
+          <Link to="/" className="text-white">
+            Home
+          </Link>
+          <Link to="/add" className="text-white ml-4">
+            Add Recipe
+          </Link>
+        </nav>
+
+        <Routes>
+          <Route path="/add" element={<AddRecipe addRecipe={addRecipe} />} />
+
+          <Route
+            path="/edit/:id"
+            element={<EditRecipe recipes={recipes} editRecipe={editRecipe} />}
           />
-        </Route>
-      </Routes>
+          <Route
+            path="/"
+            element={<Home recipes={recipes} deleteRecipe={deleteRecipe} />}
+          />
+        </Routes>
+      </div>
     </Router>
   );
-}
+};
 
 export default App;

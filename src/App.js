@@ -1,9 +1,9 @@
-import "./App.css";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import AddRecipe from "./pages/addRecipe";
 import EditRecipe from "./pages/EditRecipe";
+import "./App.css";
 
 const App = () => {
   const [recipes, setRecipes] = useState([

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import AddRecipe from "./pages/addRecipe";
 import EditRecipe from "./pages/EditRecipe";
 import "./App.css";
+import NavBar from "./components/NavBar";
 
 const App = () => {
   const [recipes, setRecipes] = useState([
@@ -44,15 +45,10 @@ const App = () => {
   return (
     <Router>
       <div>
-        <nav className="bg-blue-500 p-4">
-          <Link to="/" className="text-white">
-            Home
-          </Link>
-          <Link to="/add" className="text-white ml-4">
-            Add Recipe
-          </Link>
-        </nav>
-
+        <div className="gradient" />
+      </div>
+      <NavBar />
+      <div>
         <Routes>
           <Route path="/add" element={<AddRecipe addRecipe={addRecipe} />} />
 

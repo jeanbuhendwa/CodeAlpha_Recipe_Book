@@ -21,11 +21,14 @@ const AddRecipe = ({ addRecipe }) => {
   };
 
   return (
-    <div className="container mx-auto mt-8">
-      <h1 className="text-2xl font-bold mb-4">Add Recipe</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-600">
+    <div className="pt-[100px] px-3 md:mx-[120px] flex flex-col justify-center items-center">
+      <h1 className="text-[#461212] font-bold text-3xl my-5">Add Recipe</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="w-full md:w-[60%] flex flex-col justify-center gap-y-5"
+      >
+        <div className="flex items-center justify-start gap-10">
+          <label className="block text-lg font-semibold text-primary w-[25%]">
             Title
           </label>
           <input
@@ -33,36 +36,39 @@ const AddRecipe = ({ addRecipe }) => {
             name="title"
             value={recipe.title}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full rounded-md border-2 border-[#4612128e] text-[#4612128e] focus:border-[#461212] focus:outline-none"
+            placeholder="Recipe Title"
             required
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-600">
+        <div className="flex items-center justify-start gap-10">
+          <label className="block text-lg font-semibold text-primary w-[25%]">
             Ingredients
           </label>
           <textarea
             name="ingredients"
             value={recipe.ingredients}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full rounded-md border-2 border-[#4612128e] text-[#4612128e] focus:border-[#461212] focus:outline-none"
+            placeholder="Ingredients"
             required
           ></textarea>
         </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-600">
+        <div className="flex items-center justify-start gap-10">
+          <label className="block text-lg font-semibold text-primary w-[25%]">
             Instructions
           </label>
           <textarea
             name="instructions"
             value={recipe.instructions}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full rounded-md border-2 border-[#4612128e] text-[#4612128e] focus:border-[#461212] focus:outline-none"
+            placeholder="Instructions"
             required
           ></textarea>
         </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-600">
+        <div className="flex items-center justify-start gap-10">
+          <label className="block text-lg font-semibold text-primary w-[25%]">
             Image URL
           </label>
           <input
@@ -70,11 +76,15 @@ const AddRecipe = ({ addRecipe }) => {
             name="imageUrl"
             value={recipe.imageUrl}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full rounded-md border-2 border-[#4612128e] text-[#4612128e] focus:border-[#461212] focus:outline-none"
+            placeholder="Image URL"
           />
         </div>
 
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded-md">
+        <button
+          type="submit"
+          className="text-white bg-[#461212] font-semibold py-3 px-5 rounded-lg hover:bg-[#ffffff00] hover:text-[#461212] hover:border-2 border-[#461212] transition-all duration-300"
+        >
           Add Recipe
         </button>
       </form>

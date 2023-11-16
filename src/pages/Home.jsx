@@ -1,31 +1,48 @@
-// src/pages/Home.js
 import React from "react";
 import { Link } from "react-router-dom";
 
 const Home = ({ recipes, deleteRecipe }) => {
   return (
-    <div>
-      <h1>Recipe Book</h1>
-      <ul>
+    <div className="pt-[100px] px-3 md:px-[120px] flex flex-col items-center justify-center">
+      <h1 className="text-[#461212] font-bold text-3xl my-5">Recipe Book</h1>
+      <ul className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {recipes.map((recipe) => (
-          <li key={recipe.id} className="mb-4">
+          <li
+            key={recipe.id}
+            className="mb-4 shadow-inner bg-primary bg-opacity-[0.1] backdrop-blur-sm rounded-[8px] py-2 px-4 pb-5"
+          >
             <div className="mt-2">
               <img
                 src={recipe.imageUrl}
                 alt={recipe.title}
-                className="w-full h-auto border rounded-md"
+                className="w-full h-[200px] border rounded-md mb-4"
               />
             </div>
-            <div>
-              <h2 className="text-lg font-bold">{recipe.title}</h2>
-              <p>{recipe.instructions}</p>
-              <p>Ingredients: {recipe.ingredients}</p>
+
+            <div className="h-[130px]">
+              <h2 className="text-lg font-bold text-[#461212] mb-2">
+                {recipe.title}
+              </h2>
+              <p className="text-primary font-semibold mb-2 text-sm">
+                {recipe.instructions}
+              </p>
+              <p className="text-primary font-semibold mb-4">
+                Ingredients:{" "}
+                <span className="italic font-normal mb-2">
+                  {recipe.ingredients}
+                </span>
+              </p>
             </div>
-            <div>
-              <Link to={`/edit/${recipe.id}`}>Edit</Link>
+            <div className="flex justify-center items-center gap-4">
+              <Link
+                to={`/edit/${recipe.id}`}
+                className="text-[#461212] font-semibold border-2 border-[#461212] py-1 px-5 rounded-lg hover:bg-[#461212] hover:text-white transition-all duration-300"
+              >
+                Edit
+              </Link>
               <button
                 onClick={() => deleteRecipe(recipe.id)}
-                className="text-red-500 hover:underline"
+                className="text-white bg-[#461212] font-semibold py-1 px-5 rounded-lg hover:bg-[#ffffff00] hover:text-[#461212] hover:border-2 border-[#461212] transition-all duration-300"
               >
                 Delete
               </button>

@@ -60,9 +60,6 @@ const App = () => {
 
   return (
     <Router>
-      <div>
-        <div className="gradient" />
-      </div>
       <NavBar />
       <div>
         <Routes>

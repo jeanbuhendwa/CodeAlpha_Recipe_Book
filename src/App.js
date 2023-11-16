@@ -25,7 +25,7 @@ const App = () => {
         "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
     },
     {
-      id: 1,
+      id: 3,
       title: "Spaghetti Bolognese",
       ingredients: "Pasta, Meat, Sauce",
       instructions: "Cook and enjoy!",
@@ -33,7 +33,7 @@ const App = () => {
         "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
     },
     {
-      id: 2,
+      id: 4,
       title: "Caesar Salad",
       ingredients: "Lettuce, Chicken, Croutons, Dressing",
       instructions: "Mix and serve!",

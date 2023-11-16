@@ -36,13 +36,13 @@ const Home = ({ recipes, deleteRecipe }) => {
             <div className="flex justify-center items-center gap-4">
               <Link
                 to={`/edit/${recipe.id}`}
-                className="text-red-500 border-2 border-red-500 py-1 px-5 rounded-lg"
+                className="text-[#461212] font-semibold border-2 border-[#461212] py-1 px-5 rounded-lg hover:bg-[#461212] hover:text-white transition-all duration-300"
               >
                 Edit
               </Link>
               <button
                 onClick={() => deleteRecipe(recipe.id)}
-                className="text-white bg-red-500 py-1 px-5 rounded-lg"
+                className="text-white bg-[#461212] font-semibold py-1 px-5 rounded-lg hover:bg-[#ffffff00] hover:text-[#461212] hover:border-2 border-[#461212] transition-all duration-300"
               >
                 Delete
               </button>

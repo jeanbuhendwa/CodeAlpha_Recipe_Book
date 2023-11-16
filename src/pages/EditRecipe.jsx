@@ -28,11 +28,14 @@ const EditRecipe = ({ recipes, editRecipe }) => {
     navigate("/");
   };
   return (
-    <div className="container mx-auto mt-8">
-      <h1 className="text-2xl font-bold mb-4">Edit Recipe</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-600">
+    <div className="pt-[100px] px-3 md:mx-[120px] flex flex-col justify-center items-center">
+      <h1 className="text-[#461212] font-bold text-3xl my-5">Edit Recipe</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="w-full md:w-[60%] flex flex-col justify-center gap-y-5"
+      >
+        <div className="flex items-center justify-start gap-10">
+          <label className="block text-lg font-semibold text-primary w-[25%]">
             Title
           </label>
           <input
@@ -44,8 +47,8 @@ const EditRecipe = ({ recipes, editRecipe }) => {
             required
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-600">
+        <div className="flex items-center justify-start gap-10">
+          <label className="block text-lg font-semibold text-primary w-[25%]">
             Ingredients
           </label>
           <textarea
@@ -56,8 +59,8 @@ const EditRecipe = ({ recipes, editRecipe }) => {
             required
           ></textarea>
         </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-600">
+        <div className="flex items-center justify-start gap-10">
+          <label className="block text-lg font-semibold text-primary w-[25%]">
             Instructions
           </label>
           <textarea
@@ -68,8 +71,8 @@ const EditRecipe = ({ recipes, editRecipe }) => {
             required
           ></textarea>
         </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-600">
+        <div className="flex items-center justify-start gap-10">
+          <label className="block text-lg font-semibold text-primary w-[25%]">
             Image URL
           </label>
           <input
@@ -80,7 +83,10 @@ const EditRecipe = ({ recipes, editRecipe }) => {
             className="mt-1 p-2 w-full border rounded-md"
           />
         </div>
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded-md">
+        <button
+          type="submit"
+          className="text-white bg-[#461212] font-semibold py-3 px-5 rounded-lg hover:bg-[#ffffff00] hover:text-[#461212] hover:border-2 border-[#461212] transition-all duration-300"
+        >
           Save Changes
         </button>
       </form>

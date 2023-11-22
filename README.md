@@ -1,1 +1,1 @@
-# Getting Started with Create React Appk.
+# Getting Started wit React Appk.

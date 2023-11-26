@@ -1,1 +1,1 @@
-## Recipe book app with react js
+## Recipe book app built with react js
